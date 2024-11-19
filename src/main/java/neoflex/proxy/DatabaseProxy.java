@@ -2,18 +2,18 @@ package neoflex.proxy;
 
 public class DatabaseProxy implements DatabaseConnection{
     private Database Database;
-    private String dbName;
+    private String host;
+    private int port;
 
-    public DatabaseProxy(String dbName) {
-        this.dbName = dbName;
+    public DatabaseProxy(String host, int port) {
+        this.Database = new Database();
+        this.host = host;
+        this.port = port;
     }
 
     @Override
-    public void connect() {
-        if (Database == null) {
-            Database = new Database(dbName);
-        }
-        System.out.println("Proxy in action: Adding URL prefix");
-        Database.connect();
+    public void connect(String dbName) {
+        String fullUrl = String.format("http://%s:%d/%s", host, port, dbName);
+        Database.connect(fullUrl);
     }
 }

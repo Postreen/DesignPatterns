@@ -3,8 +3,10 @@ package neoflex.proxy;
 public class TestDatabaseProxy {
     public static void main(String[] args) {
 
-        DatabaseConnection dbProxy = new DatabaseProxy("myDatabase");
+        Database db = new Database();
+        DatabaseConnection dbProxy = new DatabaseProxy("localhost", 1488);
 
-        dbProxy.connect();
+        db.connect("myDatabase");
+        dbProxy.connect("myDatabase");
     }
 }

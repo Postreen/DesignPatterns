@@ -1,5 +1,5 @@
 package neoflex.proxy;
 
 public interface DatabaseConnection {
-    void connect();
+    void connect(String dbName);
 }
